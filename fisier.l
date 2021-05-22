@@ -1,6 +1,7 @@
 %{
+#include <stdlib.h>
+#include "types.h"
 #include "y.tab.h"
-extern int yylval;
 %}
 
 %%
@@ -12,7 +13,7 @@ extern int yylval;
 "plus"			{return PLUS;}
 "minus"		{return MINUS;}
 "ori"			{return MULT;}
-"supra"		{return DIViDE;}
+"supra"		{return DIVIDE;}
 "deschideUsa"		{return LPARAN;}
 "anchideUsa"		{return RPARAN;}
 "ie"			{return ASSIGN;}
@@ -24,11 +25,14 @@ extern int yylval;
 "apucate"		{return WHILE;}
 "siFa"			{return DO;}
 "panaNuMaEnervez"	{return OD;}
-"sciemi"		{return PRINT;}
-[0-9]+			{yylval=atoi(yytext); return NUMBER;}
-[A-Z]			{yyval=yytext[0]-'a'; return NAME;}
-\n			{newline();}
-"//".*\n		{newline();}
-.			{yyerror("illegal token");}
+"scriemi"		{return PRINT;}
+[0-9]+			{yylval.iValue = atoi(yytext); return NUMBER;}
+[A-Z]			{yylval.sIndex = *yytext - 'A'; return NAME;}
+\n			{ ; }
+
+[{}]			{ return *yytext; }
+"gatajoaca"		{ return PERIOD; }
+[ \t]+        		; 
+.			{ yyerror("illegal token"); }
 
 

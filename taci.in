@@ -1,0 +1,11 @@
+scriemi 1;
+scriemi 2;
+A ie 7;
+scriemi A;
+scriemi 3;
+A ie 3;
+scriemi A;
+B ie 4;
+C ie A plus B;
+scriemi C;
+gatajoaca
