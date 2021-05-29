@@ -41,15 +41,18 @@ int sym[26]; /* symbol table */
 %token OD
 %token PRINT
 %token PERIOD
+%token DEF
 
-%token <iValue> NUMBER
+
+%token <iValue> NUMBER FCT
 %token <sIndex> NAME
 
 
+%nonassoc IFX
+%nonassoc ELSE
 
 
-
-%type <nPtr> stmt exp stmt_list
+%type <nPtr> stmt exp stmt_list 
 
 %start      program
 
@@ -77,9 +80,11 @@ stmt : SEMICOLON					{ $$ = opr(';', 2, NULL, NULL); }
 	|exp SEMICOLON					{ $$ = $1; }
 	| PRINT exp SEMICOLON				{ $$ = opr(PRINT, 1, $2); }
 	| NAME ASSIGN exp SEMICOLON			{ $$ = opr('=', 2, id($1), $3); }
-	| IF LPARAN exp RPARAN THEN stmt FI		{ $$ = opr(IF, 2, $3, $6); }
+	| IF LPARAN exp RPARAN THEN stmt FI %prec IFX	{ $$ = opr(IF, 2, $3, $6); }
 	| IF LPARAN exp RPARAN THEN stmt ELSE stmt FI	{ $$ = opr(IF, 3, $3, $6, $8); }
 	| WHILE LPARAN exp RPARAN DO stmt OD		{ $$ = opr(WHILE, 2, $3, $6); }
+	| FCT LPARAN RPARAN				{ $$ = con($1); } //apel functie
+	| DEF FCT LPARAN RPARAN stmt			{ $2 = $5; } //declarare functie
 	| '{' stmt_list '}' 		{ $$ = $2; }
 	;
 	
