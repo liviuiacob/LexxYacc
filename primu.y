@@ -42,6 +42,7 @@ int sym[26]; /* symbol table */
 %token PRINT
 %token PERIOD
 %token DEF
+%token RET
 
 
 %token <iValue> NUMBER FCT
@@ -64,6 +65,7 @@ exp:
 	NUMBER 		{ $$ = con($1); }
 	| NAME 		{ $$ = id($1);}
 	| LPARAN exp RPARAN 	{ $$ = $2; }
+	| FCT LPARAN RPARAN	{ $$ = con($1); } //apel functie
 	| exp PLUS exp 	{ $$ = opr('+', 2, $1, $3); }
 	| exp MINUS exp 	{ $$ = opr('-', 2, $1, $3); }
 	| exp DIVIDE exp 	{ $$ = opr('/', 2, $1, $3); }
@@ -83,8 +85,8 @@ stmt : SEMICOLON					{ $$ = opr(';', 2, NULL, NULL); }
 	| IF LPARAN exp RPARAN THEN stmt FI %prec IFX	{ $$ = opr(IF, 2, $3, $6); }
 	| IF LPARAN exp RPARAN THEN stmt ELSE stmt FI	{ $$ = opr(IF, 3, $3, $6, $8); }
 	| WHILE LPARAN exp RPARAN DO stmt OD		{ $$ = opr(WHILE, 2, $3, $6); }
-	| FCT LPARAN RPARAN				{ $$ = con($1); } //apel functie
 	| DEF FCT LPARAN RPARAN stmt			{ $2 = $5; } //declarare functie
+						//nu aici crapa, am pus print si nu ajunge aici
 	| '{' stmt_list '}' 		{ $$ = $2; }
 	;
 	
@@ -113,6 +115,7 @@ nodeType *con(int value)
   /* copy information */ 
   p->type = typeCon; 
   p->con.value = value; 
+  //printf("%d", value);
   return p; 
 } 
 

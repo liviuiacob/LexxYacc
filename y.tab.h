@@ -71,10 +71,11 @@ extern int yydebug;
     PRINT = 277,
     PERIOD = 278,
     DEF = 279,
-    NUMBER = 280,
-    FCT = 281,
-    NAME = 282,
-    IFX = 283
+    RET = 280,
+    NUMBER = 281,
+    FCT = 282,
+    NAME = 283,
+    IFX = 284
   };
 #endif
 /* Tokens.  */
@@ -100,10 +101,11 @@ extern int yydebug;
 #define PRINT 277
 #define PERIOD 278
 #define DEF 279
-#define NUMBER 280
-#define FCT 281
-#define NAME 282
-#define IFX 283
+#define RET 280
+#define NUMBER 281
+#define FCT 282
+#define NAME 283
+#define IFX 284
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -115,7 +117,7 @@ union YYSTYPE
   char sIndex;     /* symbol table index */
   nodeType *nPtr;  /* node pointer */
 
-#line 119 "y.tab.h"
+#line 121 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

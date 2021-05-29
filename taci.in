@@ -1,7 +1,10 @@
 scriemi 1;
 scriemi 2;
-define functie deschide anchide
-7;
+A ie 7;
+define functie deschide anchide 0;
+functie deschide anchide ;
+scriemi 99;
+scriemi A;
 A ie 7;
 scriemi A;
 scriemi 3;
