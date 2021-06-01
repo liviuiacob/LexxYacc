@@ -73,8 +73,8 @@ extern int yydebug;
     DEF = 279,
     RET = 280,
     NUMBER = 281,
-    FCT = 282,
-    NAME = 283,
+    NAME = 282,
+    FCT = 283,
     IFX = 284
   };
 #endif
@@ -103,8 +103,8 @@ extern int yydebug;
 #define DEF 279
 #define RET 280
 #define NUMBER 281
-#define FCT 282
-#define NAME 283
+#define NAME 282
+#define FCT 283
 #define IFX 284
 
 /* Value type.  */

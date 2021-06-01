@@ -1,11 +1,19 @@
+define functie deschide anchide
+9;
+
+scriemi 111;
+
+
+scriemi functie deschide anchide;
+
+
+
 scriemi 1;
 scriemi 2;
 A ie 7;
-define functie deschide anchide 0;
-functie deschide anchide ;
-scriemi 99;
 scriemi A;
-A ie 7;
+
+A ie 9;
 scriemi A;
 scriemi 3;
 A ie 3;
@@ -16,3 +24,9 @@ dakE deschide C pastaMedie 5 anchide atunkiFa
 scriemi C;
 terminaDakE
 gatajoaca
+
+
+
+
+
+

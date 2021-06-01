@@ -45,15 +45,15 @@ int sym[26]; /* symbol table */
 %token RET
 
 
-%token <iValue> NUMBER FCT
-%token <sIndex> NAME
+%token <iValue> NUMBER 
+%token <sIndex> NAME FCT
 
 
 %nonassoc IFX
 %nonassoc ELSE
 
 
-%type <nPtr> stmt exp stmt_list 
+%type <nPtr> stmt exp stmt_list
 
 %start      program
 
@@ -61,11 +61,12 @@ int sym[26]; /* symbol table */
 %%
 
 
+
 exp: 
 	NUMBER 		{ $$ = con($1); }
-	| NAME 		{ $$ = id($1);}
-	| LPARAN exp RPARAN 	{ $$ = $2; }
-	| FCT LPARAN RPARAN	{ $$ = con($1); } //apel functie
+	| NAME 		{ $$ = id($1); }
+	| LPARAN exp RPARAN 	{ $$ = $2; } 
+	| FCT LPARAN RPARAN	{ $$ = id($1); }
 	| exp PLUS exp 	{ $$ = opr('+', 2, $1, $3); }
 	| exp MINUS exp 	{ $$ = opr('-', 2, $1, $3); }
 	| exp DIVIDE exp 	{ $$ = opr('/', 2, $1, $3); }
@@ -79,28 +80,27 @@ exp:
 	
 	
 stmt : SEMICOLON					{ $$ = opr(';', 2, NULL, NULL); }
-	|exp SEMICOLON					{ $$ = $1; }
+	| exp SEMICOLON				{ $$ = $1; }
 	| PRINT exp SEMICOLON				{ $$ = opr(PRINT, 1, $2); }
 	| NAME ASSIGN exp SEMICOLON			{ $$ = opr('=', 2, id($1), $3); }
+	| DEF FCT LPARAN RPARAN stmt			{ $$ = opr('=', 2, id($2), $5); }
 	| IF LPARAN exp RPARAN THEN stmt FI %prec IFX	{ $$ = opr(IF, 2, $3, $6); }
 	| IF LPARAN exp RPARAN THEN stmt ELSE stmt FI	{ $$ = opr(IF, 3, $3, $6, $8); }
 	| WHILE LPARAN exp RPARAN DO stmt OD		{ $$ = opr(WHILE, 2, $3, $6); }
-	| DEF FCT LPARAN RPARAN stmt			{ $2 = $5; } //declarare functie
-						//nu aici crapa, am pus print si nu ajunge aici
-	| '{' stmt_list '}' 		{ $$ = $2; }
+	| '{' stmt_list '}' 				{ $$ = $2; }
 	;
 	
 stmt_list : stmt
           | stmt_list stmt   		{ $$ = opr(';', 2, $1, $2); }
           ;
-
+          
 
 function  : function stmt    	{ ex($2); freeNode($2); }
           | /* NULL */
           ;
           
 
-program   : function PERIOD    	{ exit(0); }
+program   :  function PERIOD    	{ exit(0); }
           ;
 	
 %%
@@ -190,6 +190,7 @@ int ex(nodeType *p)
 		                return 0; 
 		    case ';': ex(p->opr.op[0]); 
 		              return ex(p->opr.op[1]); 
+		    //opr('=', 2, id($2), $5);
 		    case '=': return sym[p->opr.op[0]->id.i] = ex(p->opr.op[1]);  
 		    case '+': return ex(p->opr.op[0]) + ex(p->opr.op[1]); 
 		    case '-': return ex(p->opr.op[0]) - ex(p->opr.op[1]); 
