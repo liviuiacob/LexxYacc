@@ -1,12 +1,18 @@
-define functie deschide anchide
-9;
+define Z deschide anchide
+{
+scriemi 99;
+7;
 
+}
 scriemi 111;
 
 
-scriemi functie deschide anchide;
+K ie Z deschide anchide;
+scriemi K;
 
-
+A ie 2;
+B ie A;
+scriemi B;
 
 scriemi 1;
 scriemi 2;
@@ -20,9 +26,18 @@ A ie 3;
 scriemi A;
 B ie 4;
 C ie A plus B;
+
 dakE deschide C pastaMedie 5 anchide atunkiFa
 scriemi C;
 terminaDakE
+
+apucate deschide I subMedie 5 anchide siFa
+{
+	scriemi I;
+	I ie I plus 1;
+}
+panaNuMaEnervez
+
 gatajoaca
 
 

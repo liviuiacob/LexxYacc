@@ -28,11 +28,11 @@
 "scriemi"		{return PRINT;}
 
 "define"		{return DEF;}
-"functie"		{return FCT;}
+"Z"			{return FCT;}
 "return"		{return RET;}
 
 [0-9]+			{yylval.iValue = atoi(yytext); return NUMBER;}
-[A-Z]			{yylval.sIndex = *yytext - 'A'; return NAME;}
+[A-Y]			{yylval.sIndex = *yytext - 'A'; return NAME;}
 \n			{ ; }
 
 [{}]			{ return *yytext; }

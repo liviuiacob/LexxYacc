@@ -1,0 +1,10 @@
+Proiectul realizeaza un interpretor de C, la care am schimbat limbajul intr-unul mai "contemportan".
+ Limbajul folosit este similar cu cel folosit de generatia Z pentru a scrie mesaje text sau pe platforme de genul WhatsApp.
+Interpretorul se descurca cu comezile de baza din C (if si while -> se spune ca orice program poate fi scris doar folosind aceste 2 instruciuni). 
+De asemenea, se gaseste o incercare de a interpreta o functie/subprogram.
+Mare parte din interpretor a fost similar cu cel din laboratorul 7.
+
+Datorita comoditatii, am optat pentru un program (script.sh) ca sa rulam proiectul, redirectand fisierul "taci.in" catre intrare. Acest script executa si comezile uzuale de rulare pentru lex si yacc.
+
+Autoevaloare: B pentru funcionalitate (nu am reusit sa implementam subprogramul)
+	     FB pentru idee + comoditate de rulare si intelegere pentru zoomeri.
