@@ -350,8 +350,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 34
-#define YY_END_OF_BUFFER 35
+#define YY_NUM_RULES 32
+#define YY_END_OF_BUFFER 33
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -361,9 +361,9 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[153] =
     {   0,
-        0,    0,   35,   33,   32,   29,   33,   27,   12,   28,
-       22,   33,   33,   33,   33,   33,   33,   33,   33,   33,
-       33,   33,   30,   32,    0,   27,    0,    0,    0,    0,
+        0,    0,   33,   31,   30,   27,   31,   25,   12,   26,
+       23,   31,   31,   31,   31,   31,   31,   31,   31,   31,
+       31,   31,   28,   30,    0,   25,    0,    0,    0,    0,
         0,    0,    0,   11,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    7,    0,    0,    0,
@@ -373,9 +373,9 @@ static const flex_int16_t yy_accept[153] =
         0,    0,    0,    0,    0,    0,    1,    6,    0,    0,
 
         0,    0,    0,    0,    8,    0,    2,   15,    0,    0,
-        0,   21,    0,    0,    0,    0,   23,   26,    0,    0,
+        0,   22,    0,    0,    0,    0,   21,   24,    0,    0,
         0,   10,   17,    0,    0,    0,    0,    0,   20,    0,
-        0,   14,    9,    0,    0,    0,    3,    0,   31,    0,
+        0,   14,    9,    0,    0,    0,    3,    0,   29,    0,
         0,    0,    0,    4,    0,    0,   16,    0,    0,    0,
        19,    0
     } ;
@@ -915,76 +915,66 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
+#line 29 "fisier.l"
+{return FOR;}
+	YY_BREAK
+case 22:
+YY_RULE_SETUP
 #line 31 "fisier.l"
 {return DEF;}
 	YY_BREAK
-case 22:
+case 23:
 YY_RULE_SETUP
 #line 32 "fisier.l"
 {yylval.sIndex = *yytext - 'Z'; return FCT;}
 	YY_BREAK
-case 23:
-YY_RULE_SETUP
-#line 34 "fisier.l"
-{return FOR;}
-	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 36 "fisier.l"
-{return DEF;}
+#line 35 "fisier.l"
+{return RET;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 37 "fisier.l"
-{return FCT;}
+{yylval.iValue = atoi(yytext); return NUMBER;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 39 "fisier.l"
-{return RET;}
+#line 38 "fisier.l"
+{yylval.sIndex = *yytext - 'A'; return NAME;}
 	YY_BREAK
 case 27:
+/* rule 27 can match eol */
 YY_RULE_SETUP
-#line 41 "fisier.l"
-{yylval.iValue = atoi(yytext); return NUMBER;}
+#line 39 "fisier.l"
+{ ; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 42 "fisier.l"
-{yylval.sIndex = *yytext - 'A'; return NAME;}
+#line 41 "fisier.l"
+{ return *yytext; }
 	YY_BREAK
 case 29:
-/* rule 29 can match eol */
 YY_RULE_SETUP
-#line 43 "fisier.l"
-{ ; }
+#line 42 "fisier.l"
+{ return PERIOD; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 45 "fisier.l"
-{ return *yytext; }
+#line 43 "fisier.l"
+; 
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 46 "fisier.l"
-{ return PERIOD; }
+#line 44 "fisier.l"
+{ yyerror("illegal token"); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 47 "fisier.l"
-; 
-	YY_BREAK
-case 33:
-YY_RULE_SETUP
-#line 48 "fisier.l"
-{ yyerror("illegal token"); }
-	YY_BREAK
-case 34:
-YY_RULE_SETUP
-#line 51 "fisier.l"
 ECHO;
 	YY_BREAK
-#line 988 "lex.yy.c"
+#line 978 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1989,4 +1979,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 51 "fisier.l"
+#line 47 "fisier.l"

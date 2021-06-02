@@ -26,15 +26,11 @@
 "siFa"			{return DO;}
 "panaNuMaEnervez"	{return OD;}
 "scriemi"		{return PRINT;}
-
+"pentru"        	{return FOR;}
 
 "define"		{return DEF;}
 "Z"			{yylval.sIndex = *yytext - 'Z'; return FCT;}
 
-"pentru"        {return FOR;}
-
-"define"		{return DEF;}
-"Z"			{return FCT;}
 
 "return"		{return RET;}
 
