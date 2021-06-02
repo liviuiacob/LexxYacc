@@ -14,8 +14,8 @@
 "minus"		{return MINUS;}
 "ori"			{return MULT;}
 "supra"		{return DIVIDE;}
-"deschideUsa"		{return LPARAN;}
-"anchideUsa"		{return RPARAN;}
+"deschide"		{return LPARAN;}
+"anchide"		{return RPARAN;}
 "ie"			{return ASSIGN;}
 ";"			{return SEMICOLON;}
 "dakE"			{return IF;}
@@ -26,8 +26,14 @@
 "siFa"			{return DO;}
 "panaNuMaEnervez"	{return OD;}
 "scriemi"		{return PRINT;}
+"pentru"        {return FOR;}
+
+"define"		{return DEF;}
+"Z"			{return FCT;}
+"return"		{return RET;}
+
 [0-9]+			{yylval.iValue = atoi(yytext); return NUMBER;}
-[A-Z]			{yylval.sIndex = *yytext - 'A'; return NAME;}
+[A-Y]			{yylval.sIndex = *yytext - 'A'; return NAME;}
 \n			{ ; }
 
 [{}]			{ return *yytext; }

@@ -1,11 +1,55 @@
+define Z deschide anchide
+{
+scriemi 99;
+7;
+
+}
+scriemi 111;
+
+
+K ie Z deschide anchide;
+scriemi K;
+
+A ie 2;
+B ie A;
+scriemi B;
+
 scriemi 1;
 scriemi 2;
 A ie 7;
+scriemi A;
+
+A ie 9;
 scriemi A;
 scriemi 3;
 A ie 3;
 scriemi A;
 B ie 4;
 C ie A plus B;
+
+dakE deschide C pastaMedie 5 anchide atunkiFa
 scriemi C;
+terminaDakE
+
+D ie 10;
+pentru deschide 2 6 anchide siFa 
+{
+	scriemi D;
+	D ie D plus 1;
+}
+panaNuMaEnervez
+
+apucate deschide I subMedie 5 anchide siFa
+{
+	scriemi I;
+	I ie I plus 1;
+}
+panaNuMaEnervez
+
 gatajoaca
+
+
+
+
+
+
