@@ -28,7 +28,7 @@
 "scriemi"		{return PRINT;}
 
 "define"		{return DEF;}
-"Z"			{return FCT;}
+"Z"			{yylval.sIndex = *yytext - 'Z'; return FCT;}
 "return"		{return RET;}
 
 [0-9]+			{yylval.iValue = atoi(yytext); return NUMBER;}

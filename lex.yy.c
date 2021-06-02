@@ -916,7 +916,7 @@ YY_RULE_SETUP
 case 22:
 YY_RULE_SETUP
 #line 31 "fisier.l"
-{return FCT;}
+{yylval.sIndex = *yytext - 'Z'; return FCT;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
