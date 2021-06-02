@@ -31,6 +31,17 @@ dakE deschide C pastaMedie 5 anchide atunkiFa
 scriemi C;
 terminaDakE
 
+<<<<<<< HEAD
+=======
+D ie 10;
+pentru deschide 2 6 anchide siFa 
+{
+	scriemi D;
+	D ie D plus 1;
+}
+panaNuMaEnervez
+
+>>>>>>> dcb25eb0bc043dda5ab4d296542914eafe99516c
 apucate deschide I subMedie 5 anchide siFa
 {
 	scriemi I;

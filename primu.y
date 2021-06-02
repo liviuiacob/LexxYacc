@@ -37,6 +37,7 @@ int sym[26]; /* symbol table */
 %token ELSE
 %token FI
 %token WHILE
+%token FOR
 %token DO
 %token OD
 %token PRINT
@@ -87,6 +88,10 @@ stmt : SEMICOLON					{ $$ = opr(';', 2, NULL, NULL); }
 	| IF LPARAN exp RPARAN THEN stmt FI %prec IFX	{ $$ = opr(IF, 2, $3, $6); }
 	| IF LPARAN exp RPARAN THEN stmt ELSE stmt FI	{ $$ = opr(IF, 3, $3, $6, $8); }
 	| WHILE LPARAN exp RPARAN DO stmt OD		{ $$ = opr(WHILE, 2, $3, $6); }
+<<<<<<< HEAD
+=======
+  | FOR LPARAN exp exp RPARAN DO stmt OD      { $$ = opr(FOR, 3, $3, $4, $7); }
+>>>>>>> dcb25eb0bc043dda5ab4d296542914eafe99516c
 	| '{' stmt_list '}' 				{ $$ = $2; }
 	;
 	
@@ -171,13 +176,14 @@ int ex(nodeType *p)
 { 
   if (!p) 
     return 0; 
-
+    int i = 0;
   switch(p->type) 
     { 
     case typeCon: return p->con.value; 
     case typeId: return sym[p->id.i]; 
     case typeOpr: switch(p->opr.oper) 
                     { 
+<<<<<<< HEAD
 		    case WHILE: while(ex(p->opr.op[0])) 
 		                   ex(p->opr.op[1]); 
 		                return 0; 
@@ -201,6 +207,36 @@ int ex(nodeType *p)
 		    case NE: return ex(p->opr.op[0]) != ex(p->opr.op[1]); 
 		    case EQ: return ex(p->opr.op[0]) == ex(p->opr.op[1]); 
 		    } 
+=======
+                      case FOR: 
+                                for(i = ex(p->opr.op[0]); i < ex(p->opr.op[1]); i++) 
+                                  ex(p->opr.op[2]);
+                                
+                                return 0;
+                      case WHILE: while(ex(p->opr.op[0])) 
+                                    ex(p->opr.op[1]); 
+                                  return 0; 
+                      case IF: if (ex(p->opr.op[0])) 
+                                  ex(p->opr.op[1]); 
+                              else if (p->opr.nops > 2) 
+                                ex(p->opr.op[2]); 
+                              return 0; 
+                      case PRINT: printf("%d\n", ex(p->opr.op[0])); 
+                                  return 0; 
+                      case ';': ex(p->opr.op[0]); 
+                                return ex(p->opr.op[1]); 
+                      //opr('=', 2, id($2), $5);
+                      case '=': return sym[p->opr.op[0]->id.i] = ex(p->opr.op[1]);  
+                      case '+': return ex(p->opr.op[0]) + ex(p->opr.op[1]); 
+                      case '-': return ex(p->opr.op[0]) - ex(p->opr.op[1]); 
+                      case '*': return ex(p->opr.op[0]) * ex(p->opr.op[1]); 
+                      case '/': return ex(p->opr.op[0]) / ex(p->opr.op[1]); 
+                      case GT: return ex(p->opr.op[0]) > ex(p->opr.op[1]); 
+                      case LT: return ex(p->opr.op[0]) < ex(p->opr.op[1]); 
+                      case NE: return ex(p->opr.op[0]) != ex(p->opr.op[1]); 
+                      case EQ: return ex(p->opr.op[0]) == ex(p->opr.op[1]); 
+		                } 
+>>>>>>> dcb25eb0bc043dda5ab4d296542914eafe99516c
     } 
 }
 

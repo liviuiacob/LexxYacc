@@ -66,6 +66,7 @@ extern int yydebug;
     ELSE = 272,
     FI = 273,
     WHILE = 274,
+<<<<<<< HEAD
     DO = 275,
     OD = 276,
     PRINT = 277,
@@ -76,6 +77,19 @@ extern int yydebug;
     NAME = 282,
     FCT = 283,
     IFX = 284
+=======
+    FOR = 275,
+    DO = 276,
+    OD = 277,
+    PRINT = 278,
+    PERIOD = 279,
+    DEF = 280,
+    RET = 281,
+    NUMBER = 282,
+    NAME = 283,
+    FCT = 284,
+    IFX = 285
+>>>>>>> dcb25eb0bc043dda5ab4d296542914eafe99516c
   };
 #endif
 /* Tokens.  */
@@ -96,6 +110,7 @@ extern int yydebug;
 #define ELSE 272
 #define FI 273
 #define WHILE 274
+<<<<<<< HEAD
 #define DO 275
 #define OD 276
 #define PRINT 277
@@ -106,6 +121,19 @@ extern int yydebug;
 #define NAME 282
 #define FCT 283
 #define IFX 284
+=======
+#define FOR 275
+#define DO 276
+#define OD 277
+#define PRINT 278
+#define PERIOD 279
+#define DEF 280
+#define RET 281
+#define NUMBER 282
+#define NAME 283
+#define FCT 284
+#define IFX 285
+>>>>>>> dcb25eb0bc043dda5ab4d296542914eafe99516c
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -117,7 +145,11 @@ union YYSTYPE
   char sIndex;     /* symbol table index */
   nodeType *nPtr;  /* node pointer */
 
+<<<<<<< HEAD
 #line 121 "y.tab.h"
+=======
+#line 123 "y.tab.h"
+>>>>>>> dcb25eb0bc043dda5ab4d296542914eafe99516c
 
 };
 typedef union YYSTYPE YYSTYPE;
